@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yinzlist</title>
+<meta name="description" content="Somebody sent you a link to Yinzlist — what's in Pittsburgh today.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yinzlist">
+<meta property="og:description" content="What's in Pittsburgh today. A free iPhone app — no ads, no tracking.">
+<meta property="og:image" content="https://yinzlist.com/social.png">
+<meta property="og:image:alt" content="Yinzlist — a bridge mark in gold on a dark field">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F2F2F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+<style>
+:root {
+  --page: #F2F2F5; --ink: #111214; --ink-2: #595D64; --gold: #8F5C05; --rule: rgba(17,18,20,0.12);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --page: #0E0F12; --ink: #F2F3F5; --ink-2: #A2A8B2; --gold: #F0C05A; --rule: rgba(242,243,245,0.14); }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: var(--page); color: var(--ink); padding: 32px;
+  font: 400 17px/1.6 ui-serif, Georgia, serif; text-align: center;
+}
+.card { max-width: 34rem; }
+.eyebrow {
+  font: 500 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 18px;
+}
+h1 {
+  font: 700 clamp(28px, 6vw, 40px)/1.12 ui-sans-serif, -apple-system, sans-serif;
+  letter-spacing: -0.02em; margin: 0 0 18px;
+}
+.handle { color: var(--gold); }
+p { color: var(--ink-2); margin: 0 0 28px; }
+.cta {
+  display: inline-block; background: var(--ink); color: var(--page); text-decoration: none;
+  border-radius: 999px; padding: 14px 26px; font: 600 16px/1 ui-sans-serif, -apple-system, sans-serif;
+}
+.note { font-size: 14px; margin-top: 16px; }
+a.plain { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="card">
+  <p class="eyebrow">An invitation to Yinzlist</p>
+  <h1 id="headline">Somebody wants you to see what&rsquo;s going on.</h1>
+  <p>
+    Yinzlist is a free app for Pittsburgh. It helps you easily see
+    today&rsquo;s events and find local resources you might need.
+  </p>
+  <a class="cta" href="/">See More</a>
+</div>
+
+<script>
+(function () {
+  var parts = window.location.pathname.split('/').filter(Boolean);
+  var handle = parts.length > 1 ? parts[parts.length - 1] : '';
+  if (!/^[a-z][a-z0-9_]{2,23}$/.test(handle)) return;
+  document.getElementById('headline').innerHTML =
+    '<span class="handle">@' + handle + '</span> wants you to see what&rsquo;s going on.';
+  document.title = '@' + handle + ' invited you to Yinzlist';
+})();
+</script>
+</body>
+</html>

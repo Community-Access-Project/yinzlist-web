@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yinzlist — what's in Pittsburgh today</title>
+<meta name="description" content="A free iPhone app that gathers what's happening in Pittsburgh from the calendars libraries, museums, parks and small venues already publish, and files it by neighborhood.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yinzlist">
+<meta property="og:description" content="What's in Pittsburgh today. A free iPhone app — no ads, no tracking.">
+<meta property="og:image" content="https://yinzlist.com/social.png">
+<meta property="og:image:alt" content="Yinzlist — a bridge mark in gold on a dark field">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://yinzlist.com/">
+<meta name="theme-color" content="#F2F2F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://yinzlist.com/">
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style>
+:root {
+  --page: #F2F2F5;
+  --ink: #111214;
+  --ink-2: #595D64;
+  --gold: #8F5C05;
+  --rule: rgba(17,18,20,0.12);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0E0F12;
+    --ink: #F2F3F5;
+    --ink-2: #A2A8B2;
+    --gold: #F0C05A;
+    --rule: rgba(242,243,245,0.14);
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font: 400 17px/1.6 ui-serif, Georgia, 'Times New Roman', serif;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+.eyebrow {
+  font: 500 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+header { border-bottom: 1px solid var(--rule); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; padding-block: 20px; }
+header .name {
+  display: flex; align-items: center; gap: 10px;
+  font: 700 17px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+header .mark {
+  width: 26px; height: 26px; flex: none;
+  background: var(--gold);
+  -webkit-mask: url(/mark.svg) no-repeat center / contain;
+  mask: url(/mark.svg) no-repeat center / contain;
+}
+@media (max-width: 560px) { header nav { display: none; } }
+header a { color: var(--ink-2); text-decoration: none; font: 400 14px/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+header a:hover { color: var(--gold); }
+
+h1 {
+  font: 700 clamp(34px, 7vw, 56px)/1.08 ui-sans-serif, -apple-system, 'Helvetica Neue', sans-serif;
+  letter-spacing: -0.03em;
+  margin: 64px 0 24px;
+  max-width: 14ch;
+}
+/* The one word the mark is gold for. */
+h1 .city { color: var(--gold); }
+.lede { font-size: 19px; color: var(--ink-2); max-width: 54ch; margin: 0 0 40px; }
+
+.cta {
+  display: inline-block;
+  margin: 0;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 13px 26px;
+  color: var(--ink-2);
+  font: 600 16px/1 ui-sans-serif, -apple-system, sans-serif;
+}
+.cta-note { font: 400 16px/1.5 ui-sans-serif, -apple-system, sans-serif; margin: 16px 0 0; }
+.cta-note a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.cta-note a:hover { border-bottom-color: var(--gold); }
+
+section { padding-top: 48px; border-top: 1px solid var(--rule); margin-top: 48px; }
+h2 {
+  font: 700 26px/1.2 ui-sans-serif, -apple-system, sans-serif;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+p { max-width: 62ch; }
+
+.shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 24px; margin: 56px 0 0; }
+.shots figure { margin: 0; }
+.shots img {
+  width: 100%; height: auto; display: block;
+  border-radius: 22px;
+  border: 1px solid var(--rule);
+}
+.shots figcaption {
+  margin-top: 12px;
+  font: 500 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2);
+}
+
+.shot-single { margin: 32px 0 0; max-width: 320px; }
+.shot-single img { width: 100%; height: auto; display: block; border-radius: 22px; border: 1px solid var(--rule); }
+.shot-single figcaption {
+  margin-top: 12px;
+  font: 500 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2);
+}
+
+.areas { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px 20px; margin-top: 18px; padding: 0; list-style: none; }
+.areas li { font: 400 15px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--ink); }
+.areas li::before { content: '•'; color: var(--gold); margin-right: 8px; }
+
+.nos { margin: 24px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); }
+.nos li { display: flex; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 16px; }
+.nos b { font: 600 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--gold); letter-spacing: 0.08em; flex: none; width: 28px; }
+
+.res { margin: 28px 0 0; padding: 0; border-top: 1px solid var(--rule); }
+.res dt {
+  font: 600 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold);
+  padding-top: 14px;
+}
+.res dd { margin: 2px 0 0; padding-bottom: 14px; border-bottom: 1px solid var(--rule); font-size: 16px; }
+.more { font-size: 15px; color: var(--ink-2); margin-top: 22px; }
+
+footer { border-top: 1px solid var(--rule); margin-top: 48px; padding-block: 32px 56px; color: var(--ink-2); font-size: 15px; }
+footer a { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="name"><i class="mark" aria-hidden="true"></i>Yinzlist</span>
+    <nav><a href="https://communityaccessproject.org">Community Access Project</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="eyebrow" style="margin-top:56px">A free app for Pittsburgh</p>
+  <h1>What's in <span class="city">Pittsburgh</span> today?</h1>
+  <p class="lede">
+    Helping you easily see
+    today&rsquo;s events and find local resources you might need.
+  </p>
+
+  <p class="cta">Coming Soon</p>
+  <p class="cta-note">
+    <a href="mailto:info@communityaccessproject.org?subject=Tell%20me%20when%20Yinzlist%20is%20out">
+      Email us and we’ll tell you when it’s out →</a>
+  </p>
+
+  <div class="shots">
+    <figure>
+      <img src="/feed.webp" width="552" height="1200" loading="lazy"
+           alt="The Yinzlist feed for Oakland, showing a scavenger hunt at the Carnegie Museums and yoga in Schenley Plaza.">
+      <figcaption>Your neighborhood</figcaption>
+    </figure>
+    <figure>
+      <img src="/find.webp" width="552" height="1200" loading="lazy"
+           alt="The Find screen: search, filters for today and this weekend, neighborhoods, and a map of Pittsburgh with event pins.">
+      <figcaption>Your city</figcaption>
+    </figure>
+  </div>
+
+  <section>
+    <h2>Neighborhoods</h2>
+    <p>
+      Yinzlist covers Pittsburgh area. You can even see a feed by which
+      region of the city you choose:
+    </p>
+    <ul class="areas">
+      <li>Bloomfield</li>
+      <li>Downtown</li>
+      <li>Garfield</li>
+      <li>Highland Park</li>
+      <li>Homewood</li>
+      <li>Lawrenceville</li>
+      <li>North Side</li>
+      <li>Oakland</li>
+      <li>Penn Hills</li>
+      <li>Point Breeze</li>
+      <li>Regent Square</li>
+      <li>South Side</li>
+      <li>Squirrel Hill</li>
+      <li>The Strip District</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Create your own events</h2>
+    <p>
+      A run on Tuesday, a swim on Friday, a picnic at the
+      park — to your friends, to a group, or to the whole city. No ads, no short
+      videos, no distractions. Just the community you are already part of.
+    </p>
+    <ul class="nos">
+      <li><b>No</b> advertising.</li>
+      <li><b>No</b> tracking and no analytics.</li>
+      <li><b>No</b> location permission.</li>
+      <li><b>No</b> cost, now or later.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Local resources</h2>
+    <p>
+      Federal, state, and local communities pay out food help, heating help, 
+      health coverage, child care
+      and tax credits to people who apply, and every year a great deal of it goes
+      unclaimed by people who qualify and never knew it existed.
+    </p>
+
+    <figure class="shot-single">
+      <img src="/resources.webp" width="552" height="1200" loading="lazy"
+           alt="The Local resources screen with the Food category open: COMPASS and SNAP, each with who it is generally for, an Apply button, a phone number, and the date it was last checked.">
+      <figcaption>Resources</figcaption>
+    </figure>
+
+    <dl class="res">
+      <dt>Food</dt>
+      <dd>SNAP · WIC · Food pantries · COMPASS</dd>
+
+      <dt>Heat, phone and bills</dt>
+      <dd>LIHEAP · Dollar Energy Fund · Duquesne Light payment help · Lifeline</dd>
+
+      <dt>Cash and tax credits</dt>
+      <dd>Working Pennsylvanians Tax Credit · Property Tax/Rent Rebate · Free tax filing in Pittsburgh · Free tax help, year-round</dd>
+
+      <dt>Health care</dt>
+      <dd>Medicaid · CHIP</dd>
+
+      <dt>Kids and child care</dt>
+      <dd>Child Care Works · Free school breakfast</dd>
+
+      <dt>Housing</dt>
+      <dd>Allegheny Link</dd>
+
+      <dt>Legal help</dt>
+      <dd>Free legal help</dd>
+
+      <dt>Getting around</dt>
+      <dd>Reduced bus fare</dd>
+
+      <dt>Other places to ask</dt>
+      <dd>Call 211 · Allegheny Connect</dd>
+    </dl>
+    <p class="more">More come as they are found.</p>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <p>
+    Yinzlist is made with ❤️ by
+    <a href="https://communityaccessproject.org">Community Access Project</a>,
+    a Pennsylvania nonprofit corporation.
+  </p>
+  <p><a href="/privacy/">Privacy</a></p>
+</footer>
+
+</body>
+</html>
