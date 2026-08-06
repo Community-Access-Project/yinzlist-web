@@ -7,7 +7,7 @@
 <meta name="description" content="Somebody sent you a link to Yinzlist — what's in Pittsburgh today.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Yinzlist">
-<meta property="og:description" content="What's in Pittsburgh today. A free iPhone app — no ads, no tracking.">
+<meta property="og:description" content="Today&#39;s events across Pittsburgh.">
 <meta property="og:image" content="https://yinzlist.com/social.png">
 <meta property="og:image:alt" content="Yinzlist — a bridge mark in gold on a dark field">
 <meta property="og:image:width" content="1200">
@@ -15,45 +15,76 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F2F2F5" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
 :root {
-  --page: #F2F2F5; --ink: #111214; --ink-2: #595D64; --gold: #8F5C05; --rule: rgba(17,18,20,0.12);
+  --page: #F2F2F5; --card: #FFFFFF; --ink: #111214; --ink-2: #595D64;
+  --gold: #8F5C05; --rule: rgba(17,18,20,0.12);
 }
 @media (prefers-color-scheme: dark) {
-  :root { --page: #0E0F12; --ink: #F2F3F5; --ink-2: #A2A8B2; --gold: #F0C05A; --rule: rgba(242,243,245,0.14); }
+  :root {
+    --page: #0E0F12; --card: #17191D; --ink: #F2F3F5; --ink-2: #A2A8B2;
+    --gold: #F0C05A; --rule: rgba(242,243,245,0.14);
+  }
 }
 * { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
 body {
-  margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
-  background: var(--page); color: var(--ink); padding: 32px;
-  font: 400 17px/1.6 ui-serif, Georgia, serif; text-align: center;
+  margin: 0; min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--page); color: var(--ink); padding: 28px;
+  font: 400 17px/1.6 ui-serif, Georgia, 'Times New Roman', serif;
+  text-align: center; -webkit-font-smoothing: antialiased;
 }
-.card { max-width: 34rem; }
+
+.card {
+  position: relative;
+  width: 100%; max-width: 30rem;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  padding: 50px 34px 42px;
+}
+.card::before {
+  content: ''; position: absolute; inset: 9px;
+  border: 1px solid var(--rule); pointer-events: none;
+}
+
+.mark {
+  display: block; width: 34px; height: 34px; margin: 0 auto 20px;
+  background: var(--gold);
+  -webkit-mask: url(/mark.svg) no-repeat center / contain;
+  mask: url(/mark.svg) no-repeat center / contain;
+}
 .eyebrow {
-  font: 500 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 18px;
+  font: 500 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-2); margin: 0 0 20px;
 }
 h1 {
-  font: 700 clamp(28px, 6vw, 40px)/1.12 ui-sans-serif, -apple-system, sans-serif;
-  letter-spacing: -0.02em; margin: 0 0 18px;
+  font: 400 clamp(24px, 5.4vw, 30px)/1.32 ui-serif, Georgia, 'Times New Roman', serif;
+  margin: 0 0 22px; letter-spacing: -0.01em;
 }
-.handle { color: var(--gold); }
-p { color: var(--ink-2); margin: 0 0 28px; }
+.handle { color: var(--gold); font-weight: 600; }
+.divider { width: 36px; height: 1px; margin: 0 auto 22px; border: 0; background: var(--gold); opacity: 0.55; }
+.body { color: var(--ink-2); font-size: 16px; margin: 0 0 30px; }
 .cta {
-  display: inline-block; background: var(--ink); color: var(--page); text-decoration: none;
-  border-radius: 999px; padding: 14px 26px; font: 600 16px/1 ui-sans-serif, -apple-system, sans-serif;
+  display: inline-block; text-decoration: none;
+  background: var(--ink); color: var(--card);
+  border-radius: 999px; padding: 13px 30px;
+  font: 600 15px/1 ui-sans-serif, -apple-system, 'Helvetica Neue', sans-serif;
 }
-.note { font-size: 14px; margin-top: 16px; }
-a.plain { color: var(--gold); }
+.cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 </style>
 </head>
 <body>
 <div class="card">
-  <p class="eyebrow">An invitation to Yinzlist</p>
+  <i class="mark" aria-hidden="true"></i>
+  <p class="eyebrow">You're invited</p>
   <h1 id="headline">Somebody wants you to see what&rsquo;s going on.</h1>
-  <p>
-    Yinzlist is a free app for Pittsburgh. It helps you easily see
-    today&rsquo;s events and find local resources you might need.
+  <hr class="divider">
+  <p class="body">
+    Yinzlist gathers Pittsburgh events and local resources worth knowing about.
   </p>
   <a class="cta" href="/">See More</a>
 </div>
