@@ -132,7 +132,7 @@ footer a { color: var(--gold); }
 </header>
 
 <main class="wrap">
-  <p class="eyebrow">Effective August 6, 2026</p>
+  <p class="eyebrow">Effective August 24, 2026</p>
   <h1>Privacy Policy</h1>
   <p class="lede">
     This policy describes the personal information collected by the Yinzlist
@@ -144,8 +144,8 @@ footer a { color: var(--gold); }
   <section>
     <h2><span class="n">1.</span>Operator and contact</h2>
     <p>
-      Yinzlist is operated by Community Access Project, a Pennsylvania nonprofit
-      corporation, which is the controller of the personal information described
+      Yinzlist is operated by Community Access Project Inc., a Pennsylvania
+      nonprofit corporation, which is the controller of the information described
       in this policy. Enquiries regarding this policy or the exercise of any
       right described in it may be directed to
       <a href="mailto:info@communityaccessproject.org">info@communityaccessproject.org</a>.
@@ -181,6 +181,21 @@ footer a { color: var(--gold); }
       <dt>Contacts and connections</dt>
       <dd>The other users and groups a user is connected to.</dd>
 
+      <dt>Reports</dt>
+      <dd>Where a user reports a post or an account, the subject of the report,
+        the reason selected, and any note the user writes. A note is free text
+        and may describe another user. A report is visible to the user who made
+        it and to a moderator; it is never shown to the user reported.</dd>
+
+      <dt>Blocks and hidden sources</dt>
+      <dd>The accounts a user has blocked and the event sources a user has
+        removed from their own feed. Neither is shown to any other user.</dd>
+
+      <dt>Claims of an organisation page</dt>
+      <dd>Where a user asks to be recognised as responsible for an
+        organisation's page, the account of themselves they submit in support of
+        the request, and any contact detail they choose to include.</dd>
+
       <dt>Telephone number</dt>
       <dd>Where a telephone number is provided, it is collected and stored, and
         is used to verify the account, to send messages and notifications
@@ -201,6 +216,12 @@ footer a { color: var(--gold); }
       audience the user selected, to determine which content is shown, and, where
       a telephone number has been added, to verify that number and to enable
       contact matching under clause 5. Personal information is not sold.
+    </p>
+    <p>
+      Where a user chooses to add an event to their calendar, the application
+      writes that event to the calendar held on the device. This requires the
+      permission of the operating system. The application does not read the
+      calendar, and no calendar information is transmitted to the service.
     </p>
   </section>
 
@@ -246,11 +267,26 @@ footer a { color: var(--gold); }
     <h2><span class="n">5.</span>Contact matching</h2>
     <p>
       Contact matching is a feature that requires the user's express permission
-      through the operating system. Where permission is granted, the telephone
-      numbers held in the device's address book are used to identify which of
-      them correspond to accounts registered with the service, and the
-      corresponding accounts are shown to the user. A number that does not
-      correspond to a registered account is not added to the service's records.
+      through the operating system. Where permission is granted, the application
+      reads the telephone numbers held in the device's address book and no other
+      field of a contact record. Each number is converted on the device into a
+      SHA-256 digest, and it is those digests, to a maximum of two thousand,
+      that are transmitted to the service. The address book itself is not
+      transmitted and is not stored. A digest that does not correspond to a
+      registered account is discarded and is not recorded, so a person who is
+      not a user of the service does not become known to it by appearing in
+      somebody's address book.
+    </p>
+    <p>
+      Users should understand what that protection does and does not extend to.
+      It protects the people in a user's address book. It does not make a
+      telephone number that has been added to an account under clause 2 private
+      from the operator: a telephone number is short enough that every possible
+      number can be converted to a digest and compared, and the digests must be
+      calculated identically for every user in order to match at all, so no
+      measure is available that would prevent this. A number added to an account
+      should therefore be understood as held by the operator, and it is held in
+      the manner described in clauses 2, 3 and 7.
     </p>
   </section>
 
@@ -338,7 +374,7 @@ footer a { color: var(--gold); }
 <footer class="wrap">
   <p>
     Yinzlist is made by
-    <a href="https://communityaccessproject.org">Community Access Project</a>,
+    <a href="https://communityaccessproject.org">Community Access Project Inc.</a>,
     a Pennsylvania nonprofit corporation.
   </p>
   <p><a href="/">What Yinzlist is</a></p>
