@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["K66GA5Y8W6.org.yinzlist.app"],
+        "components": [
+          { "/": "/post/*", "comment": "a happening — app/src/lib/post-link.ts" },
+          { "/": "/u/*", "comment": "a person or group by handle — app/src/lib/handles.ts" }
+        ]
+      }
+    ]
+  }
+}

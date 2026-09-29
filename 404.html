@@ -75,28 +75,67 @@ h1 {
   font: 600 15px/1 ui-sans-serif, -apple-system, 'Helvetica Neue', sans-serif;
 }
 .cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.cta.ghost { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); margin-left: 10px; }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 0; }
+.small { font-size: 14px; color: var(--ink-2); margin: 14px 0 0; }
+.small a { color: var(--gold); }
 </style>
 </head>
 <body>
 <div class="card">
   <i class="mark" aria-hidden="true"></i>
-  <p class="eyebrow">You're invited</p>
+  <p class="eyebrow" id="eyebrow">You're invited</p>
   <h1 id="headline">Somebody wants you to see what&rsquo;s going on.</h1>
   <hr class="divider">
-  <p class="body">
+  <p class="body" id="body">
     Yinzlist gathers Pittsburgh events and local resources worth knowing about.
   </p>
-  <a class="cta" href="/">See More</a>
+  <div class="actions">
+    <a class="cta" id="primary" href="/">See More</a>
+    <a class="cta ghost" id="open" href="#" hidden>Open in Yinzlist</a>
+  </div>
+  <p class="small" id="small" hidden></p>
 </div>
 
 <script>
 (function () {
+  var APP_STORE_URL = 'https://testflight.apple.com/join/g3GUvEbZ';
+  var SCHEME = 'yinzlist://';
+
   var parts = window.location.pathname.split('/').filter(Boolean);
-  var handle = parts.length > 1 ? parts[parts.length - 1] : '';
-  if (!/^[a-z][a-z0-9_]{2,23}$/.test(handle)) return;
-  document.getElementById('headline').innerHTML =
-    '<span class="handle">@' + handle + '</span> wants you to see what&rsquo;s going on.';
-  document.title = '@' + handle + ' invited you to Yinzlist';
+  var kind = parts[0] || '';
+  var id = parts.length > 1 ? parts[parts.length - 1] : '';
+  var isHandle = kind === 'u' && /^[a-z][a-z0-9_]{2,23}$/.test(id);
+  var isPost = kind === 'post' && /^[0-9a-f-]{36}$/.test(id);
+  if (!isHandle && !isPost) return;
+
+  var headline = document.getElementById('headline');
+  var body = document.getElementById('body');
+  var open = document.getElementById('open');
+  var primary = document.getElementById('primary');
+  var small = document.getElementById('small');
+
+  if (isHandle) {
+    headline.innerHTML = '<span class="handle">@' + id + '</span> wants you to see what&rsquo;s going on.';
+    document.title = '@' + id + ' invited you to Yinzlist';
+    open.href = SCHEME + 'u/' + id;
+  } else {
+    document.getElementById('eyebrow').textContent = 'Come along';
+    headline.textContent = 'Somebody\u2019s going to something and wants you there.';
+    body.textContent = 'A happening in Pittsburgh, with a time and a place. Open it in Yinzlist to see what, and to say you\u2019re coming.';
+    document.title = 'You\u2019re invited to something on Yinzlist';
+    open.href = SCHEME + 'post/' + id;
+  }
+
+  // Two buttons - the app if on device, the store if not
+  open.hidden = false;
+  if (APP_STORE_URL) {
+    primary.textContent = 'Get Yinzlist';
+    primary.href = APP_STORE_URL;
+  } else {
+    small.hidden = false;
+    small.innerHTML = 'Yinzlist is a free iPhone app for Pittsburgh, coming soon. <a href="/">What it is</a>.';
+  }
 })();
 </script>
 </body>
