@@ -89,8 +89,8 @@ h1 {
   <h1 id="headline">A friend wants you on Yinzlist.</h1>
   <hr class="divider">
   <p class="body" id="body">
-    A free app for what&rsquo;s on in Pittsburgh, in an early trial.
-    It installs through Apple&rsquo;s TestFlight app.
+    A free app for what&rsquo;s on in Pittsburgh. Open this link on your
+    iPhone to get it.
   </p>
   <div class="actions">
     <a class="cta" id="primary" href="/">What it is</a>
@@ -100,11 +100,10 @@ h1 {
 <script>
 (function () {
   var APP_STORE_URL = 'https://testflight.apple.com/join/g3GUvEbZ';
-  if (!APP_STORE_URL) return;
-  document.getElementById('body').textContent = 'Taking you to the download\u2026';
-  var cta = document.getElementById('primary');
-  cta.textContent = 'Get Yinzlist';
-  cta.href = APP_STORE_URL;
+  // Only iPhone redirects to testflight
+  var ua = navigator.userAgent;
+  var phone = /iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  if (!APP_STORE_URL || !phone) return;
   window.location.replace(APP_STORE_URL);
 })();
 </script>
