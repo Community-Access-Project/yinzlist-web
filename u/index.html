@@ -99,9 +99,6 @@ h1 {
 
 <script>
 (function () {
-  // Where to get the app. Null until there is a TestFlight or App Store link;
-  // the day there is one, this line is the whole change. A shared link keeps
-  // working either way — it was always the right link.
   var APP_STORE_URL = 'https://testflight.apple.com/join/g3GUvEbZ';
   var SCHEME = 'yinzlist://';
 
@@ -130,9 +127,6 @@ h1 {
     open.href = SCHEME + 'post/' + id;
   }
 
-  // Two buttons: the app if you have it, the store if you don't. Until the
-  // store link exists the first button stays the site, which at least says
-  // what this is.
   open.hidden = false;
   if (APP_STORE_URL) {
     primary.textContent = 'Get Yinzlist';

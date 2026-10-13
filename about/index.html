@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Yinzlist</title>
+<meta name="description" content="Who built Yinzlist, and why.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About — Yinzlist">
+<meta property="og:description" content="Who built Yinzlist, and why.">
+<meta property="og:image" content="https://yinzlist.com/social.png">
+<meta property="og:image:alt" content="Yinzlist — a bridge mark in gold on a dark field">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://yinzlist.com/about/">
+<meta name="theme-color" content="#F2F2F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://yinzlist.com/about/">
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style>
+:root {
+  --page: #F2F2F5;
+  --ink: #111214;
+  --ink-2: #595D64;
+  --gold: #8F5C05;
+  --rule: rgba(17,18,20,0.12);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0E0F12;
+    --ink: #F2F3F5;
+    --ink-2: #A2A8B2;
+    --gold: #F0C05A;
+    --rule: rgba(242,243,245,0.14);
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font: 400 17px/1.6 ui-serif, Georgia, 'Times New Roman', serif;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+.eyebrow {
+  font: 500 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+header { border-bottom: 1px solid var(--rule); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; padding-block: 20px; }
+header .name {
+  display: flex; align-items: center; gap: 10px;
+  font: 700 17px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+}
+header .mark {
+  width: 26px; height: 26px; flex: none;
+  background: var(--gold);
+  -webkit-mask: url(/mark.svg) no-repeat center / contain;
+  mask: url(/mark.svg) no-repeat center / contain;
+}
+@media (max-width: 560px) { header nav { display: none; } }
+header nav a { color: var(--ink-2); text-decoration: none; font: 400 14px/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+header nav a:hover { color: var(--gold); }
+
+h1 {
+  font: 700 clamp(30px, 6vw, 42px)/1.15 ui-sans-serif, -apple-system, 'Helvetica Neue', sans-serif;
+  letter-spacing: -0.03em;
+  margin: 32px 0 20px;
+}
+p { max-width: 62ch; }
+main a { color: var(--gold); }
+a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+
+/* Photo beside the words on wide screens, under them on a phone. */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: center; margin-top: 48px; }
+@media (min-width: 680px) { .hero { grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 40px; } }
+.hero h1 { margin-top: 20px; }
+.lede { font-size: 18px; color: var(--ink-2); margin: 0; }
+.role {
+  margin: 20px 0 0;
+  font: 500 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2);
+}
+.hero img {
+  width: 100%; max-width: 420px; height: auto; display: block;
+  border-radius: 22px;
+  border: 1px solid var(--rule);
+}
+
+section { padding-top: 48px; border-top: 1px solid var(--rule); margin-top: 48px; }
+h2 {
+  font: 700 21px/1.25 ui-sans-serif, -apple-system, sans-serif;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+}
+
+footer { border-top: 1px solid var(--rule); margin-top: 48px; padding-block: 32px 56px; color: var(--ink-2); font-size: 15px; }
+footer a { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="name" href="/"><i class="mark" aria-hidden="true"></i>Yinzlist</a>
+    <nav><a href="https://communityaccessproject.org">Community Access Project</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <p class="eyebrow">About</p>
+      <h1>Built in Pittsburgh</h1>
+      <p class="lede">
+        I&rsquo;m Jacob Makarsky, a software engineer from Westmoreland County, transplanted around the world and now into Pittsburgh.
+      </p>
+      <p class="role">Founder · Software engineer</p>
+    </div>
+    <img src="/assets/founder.jpg" width="926" height="1100"
+         alt="Jacob Makarsky smiling in a green hoodie with a Parade Day Dash medal, a friend's arm over his shoulder.">
+  </div>
+
+  <section>
+    <h2>Why I built it</h2>
+    <p>
+      When I moved to the city in 2026, I tried to find things to do and help
+      my family might qualify for, which became too complicated. Events and resources were
+      scattered across countless social media apps and websites.
+    </p>
+    <p>
+      I stay off most social media because it&rsquo;s built to keep you
+      scrolling, the opposite of Yinzlist's mission. I wanted a clean, trustworthy place to find things to do, with
+      no ads or distractions. Yinzlist wants you to go outside and be a part of your community, whether that's your family, friends, neighbors, or all of the above. It&rsquo;s free,
+      and I created it under a nonprofit, so it can never be poisoned by for-profit activities. I hope it helps you the way it's helped me!
+    </p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p><a href="mailto:info@communityaccessproject.org">info@communityaccessproject.org</a></p>
+    <p><a href="https://communityaccessproject.org/about/">Meet the team →</a></p>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p>
+    Yinzlist is made with ❤️ by
+    <a href="https://communityaccessproject.org">Community Access Project</a>,
+    a Pennsylvania nonprofit corporation.
+  </p>
+  <p><a href="/privacy/">Privacy</a></p>
+</footer>
+
+</body>
+</html>
