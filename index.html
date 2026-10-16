@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yinzlist — what's in Pittsburgh today</title>
-<meta name="description" content="Gathers what's happening in Pittsburgh from the calendars libraries, museums, parks and small venues already publish, and files it by neighborhood.">
+<title>Yinzlist — what's happening in Pittsburgh today</title>
+<meta name="description" content="See every event in Pittsburgh: today, tomorrow, this weekend and all year long. Free, from a Pittsburgh nonprofit.">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Yinzlist">
-<meta property="og:description" content="Today&#39;s events across Pittsburgh.">
+<meta property="og:description" content="Every event in Pittsburgh, today, tomorrow and all year long.">
 <meta property="og:image" content="https://yinzlist.com/social.png">
 <meta property="og:image:alt" content="Yinzlist — a bridge mark in gold on a dark field">
 <meta property="og:image:width" content="1200">
@@ -28,6 +28,7 @@
   --ink-2: #595D64;
   --gold: #8F5C05;
   --rule: rgba(17,18,20,0.12);
+  --card: #FFFFFF;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -36,6 +37,7 @@
     --ink-2: #A2A8B2;
     --gold: #F0C05A;
     --rule: rgba(242,243,245,0.14);
+    --card: #17191D;
   }
 }
 
@@ -78,7 +80,7 @@ h1 {
   font: 700 clamp(34px, 7vw, 56px)/1.08 ui-sans-serif, -apple-system, 'Helvetica Neue', sans-serif;
   letter-spacing: -0.03em;
   margin: 64px 0 24px;
-  max-width: 14ch;
+  max-width: 16ch;
 }
 /* The one word the mark is gold for. */
 h1 .city { color: var(--gold); }
@@ -87,15 +89,46 @@ h1 .city { color: var(--gold); }
 .cta {
   display: inline-block;
   margin: 0;
-  border: 1px solid var(--rule);
   border-radius: 999px;
-  padding: 13px 26px;
-  color: var(--ink-2);
+  padding: 15px 28px;
+  background: var(--ink);
+  color: var(--page);
+  text-decoration: none;
   font: 600 16px/1 ui-sans-serif, -apple-system, sans-serif;
 }
-.cta-note { font: 400 16px/1.5 ui-sans-serif, -apple-system, sans-serif; margin: 16px 0 0; }
-.cta-note a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--rule); }
-.cta-note a:hover { border-bottom-color: var(--gold); }
+.cta:hover { background: var(--gold); }
+.waitlist {
+  margin: 0; max-width: 30rem;
+  padding: 22px;
+  background: var(--card);
+  border: 1px solid var(--rule); border-radius: 20px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+  font: 400 16px/1.5 ui-sans-serif, -apple-system, sans-serif;
+}
+.waitlist .cta { display: block; text-align: center; border-radius: 12px; }
+.waitlist hr { border: 0; border-top: 1px solid var(--rule); margin: 22px 0 18px; }
+.waitlist h2 { font-size: 19px; margin: 0 0 4px; }
+.waitlist label { display: block; margin-bottom: 14px; color: var(--ink-2); }
+.waitlist-row { display: flex; gap: 8px; }
+.waitlist input {
+  flex: 1; min-width: 0;
+  padding: 12px 16px;
+  border: 1px solid var(--rule); border-radius: 12px;
+  background: var(--page); color: var(--ink);
+  font: inherit;
+}
+.waitlist input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.waitlist button {
+  padding: 12px 20px;
+  border: 0; border-radius: 12px;
+  background: var(--gold); color: var(--card);
+  font: 600 16px/1 ui-sans-serif, -apple-system, sans-serif;
+  cursor: pointer;
+}
+.waitlist button:disabled { opacity: 0.5; cursor: default; }
+.waitlist-trap { position: absolute; left: -9999px; }
+.waitlist-status:empty { display: none; }
+.waitlist-status { margin: 10px 0 0; font-size: 15px; color: var(--ink-2); }
 
 section { padding-top: 48px; border-top: 1px solid var(--rule); margin-top: 48px; }
 h2 {
@@ -130,17 +163,20 @@ p { max-width: 62ch; }
 .areas li { font: 400 15px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--ink); }
 .areas li::before { content: '•'; color: var(--gold); margin-right: 8px; }
 
-.res { margin: 28px 0 0; padding: 0; border-top: 1px solid var(--rule); }
-.res dt {
-  font: 600 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold);
-  padding-top: 14px;
-}
-.res dd { margin: 2px 0 0; padding-bottom: 14px; border-bottom: 1px solid var(--rule); font-size: 16px; }
-.more { font-size: 15px; color: var(--ink-2); margin-top: 22px; }
 
-footer { border-top: 1px solid var(--rule); margin-top: 48px; padding-block: 32px 56px; color: var(--ink-2); font-size: 15px; }
+main section:last-child { padding-bottom: 24px; }
+main section a { color: var(--gold); }
+footer { border-top: 1px solid var(--rule); margin-top: 72px; padding-block: 48px 72px; color: var(--ink-2); font: 400 15px/1.6 ui-sans-serif, -apple-system, sans-serif; }
+footer .mark {
+  display: block; width: 28px; height: 28px; margin-bottom: 16px;
+  background: var(--gold);
+  -webkit-mask: url(/mark.svg) no-repeat center / contain;
+  mask: url(/mark.svg) no-repeat center / contain;
+}
+footer p { margin: 0 0 20px; }
 footer a { color: var(--gold); }
+footer nav { display: flex; gap: 24px; }
+footer nav a { text-decoration: none; }
 </style>
 </head>
 <body>
@@ -154,27 +190,35 @@ footer a { color: var(--gold); }
 
 <main class="wrap">
   <p class="eyebrow" style="margin-top:56px">Pittsburgh events and resources</p>
-  <h1>What's in <span class="city">Pittsburgh</span> today?</h1>
+  <h1>What's happening in <span class="city">Pittsburgh</span> today?</h1>
   <p class="lede">
-    Helping you easily see
-    today&rsquo;s events and find local resources you might need.
+    See every event in the city: today, tomorrow, this weekend and all year long.
   </p>
 
-  <p class="cta">Coming Soon</p>
-  <p class="cta-note">
-    <a href="mailto:info@communityaccessproject.org?subject=Tell%20me%20when%20Yinzlist%20is%20out">
-      Email us and we’ll tell you when it’s out →</a>
-  </p>
+  <form class="waitlist" id="waitlist" novalidate>
+    <!-- TestFlight until the App Store release; swap this link then. -->
+    <a class="cta" href="https://testflight.apple.com/join/g3GUvEbZ">Try it on iPhone</a>
+    <hr>
+    <h2>Not on iPhone?</h2>
+    <label for="waitlist-email">Leave your email to be updated on other releases.</label>
+    <div class="waitlist-row">
+      <input id="waitlist-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+      <button type="submit">Tell me</button>
+    </div>
+    <!-- Left empty by people; filled by bots that complete every field. -->
+    <input class="waitlist-trap" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <p class="waitlist-status" id="waitlist-status" role="status"></p>
+  </form>
 
   <div class="shots">
     <figure>
-      <img src="/feed.webp" width="552" height="1200" loading="lazy"
-           alt="The Yinzlist feed for Oakland, showing a scavenger hunt at the Carnegie Museums and yoga in Schenley Plaza.">
+      <img src="/feed.webp?v=2" width="552" height="1200" loading="lazy"
+           alt="The Yinzlist feed for Lawrenceville, showing a show at Attack Theatre and a Mac Miller tribute at Thunderbird Cafe tonight.">
       <figcaption>Your neighborhood</figcaption>
     </figure>
     <figure>
-      <img src="/find.webp" width="552" height="1200" loading="lazy"
-           alt="The Find screen: search, filters for today and this weekend, neighborhoods, and a map of Pittsburgh with event pins.">
+      <img src="/find.webp?v=2" width="552" height="1200" loading="lazy"
+           alt="The Find screen: search, choices for when, what and where, and a map of Pittsburgh with event pins.">
       <figcaption>Your city</figcaption>
     </figure>
   </div>
@@ -182,14 +226,15 @@ footer a { color: var(--gold); }
   <section>
     <h2>Neighborhoods</h2>
     <p>
-      Yinzlist covers Pittsburgh area. You can even see a feed by which
-      region of the city you choose:
+      Yinzlist covers the whole Pittsburgh area. Pick a neighborhood to see
+      what&rsquo;s happening close to home.
     </p>
-    <ul class="areas">
+    <ul class="areas" id="areas">
       <li>Bloomfield</li>
       <li>Downtown</li>
       <li>Garfield</li>
       <li>Highland Park</li>
+      <li>Hill District</li>
       <li>Homewood</li>
       <li>Lawrenceville</li>
       <li>North Side</li>
@@ -206,73 +251,105 @@ footer a { color: var(--gold); }
   <section>
     <h2>Create your own events</h2>
     <p>
-      A run on Tuesday, a swim on Friday, a picnic on Sunday — to your friends, to a group, or to the whole city. Just the
-      community you are already part of.
+      Dinner on Monday, the gym on Tuesday, going out on Friday — to your friends, to a group, or to the whole city.
     </p>
+
+    <figure class="shot-single">
+      <img src="/create.webp?v=2" width="552" height="1200" loading="lazy"
+           alt="Posting an event: a picnic in Arsenal Park, drawn as a gold flyer with the date large, with a start time, place, cost and who sees it.">
+      <figcaption>Your own events</figcaption>
+    </figure>
   </section>
 
   <section>
     <h2>Local resources</h2>
     <p>
-      Federal, state, and local communities pay out food help, heating help, 
-      health coverage, child care
-      and tax credits to people who apply, and every year a great deal of it goes
-      unclaimed by people who qualify and never knew it existed.
+      Federal, state and local programs help with food, heat, health coverage,
+      child care and taxes for people who apply. Every year a lot of that help
+      goes unclaimed by people who qualify and never knew it existed.
     </p>
 
     <figure class="shot-single">
-      <img src="/resources.webp" width="552" height="1200" loading="lazy"
-           alt="The Local resources screen with the Food category open: COMPASS and SNAP, each with who it is generally for, an Apply button, and a phone number.">
+      <img src="/resources.webp?v=2" width="552" height="1200" loading="lazy"
+           alt="The Local resources screen with Food open: COMPASS and SNAP, each with who it is generally for, an Apply button and a phone number.">
       <figcaption>Resources</figcaption>
     </figure>
-
-    <dl class="res">
-      <dt>Food</dt>
-      <dd>SNAP · WIC · Food pantries · COMPASS</dd>
-
-      <dt>Heat, phone and bills</dt>
-      <dd>LIHEAP · Dollar Energy Fund · Duquesne Light payment help · Lifeline</dd>
-
-      <dt>Cash and tax credits</dt>
-      <dd>Working Pennsylvanians Tax Credit · Property Tax/Rent Rebate · Free tax filing in Pittsburgh · Free tax help, year-round</dd>
-
-      <dt>Health care</dt>
-      <dd>Medicaid · CHIP</dd>
-
-      <dt>Kids and child care</dt>
-      <dd>Child Care Works · Free school breakfast</dd>
-
-      <dt>Housing</dt>
-      <dd>Allegheny Link</dd>
-
-      <dt>Legal help</dt>
-      <dd>Free legal help</dd>
-
-      <dt>Getting around</dt>
-      <dd>Reduced bus fare</dd>
-
-      <dt>Other places to ask</dt>
-      <dd>Call 211 · Allegheny Connect</dd>
-    </dl>
-    <p class="more">More come as they are found.</p>
   </section>
 
   <section>
     <h2>Made in Pittsburgh</h2>
-    <p>Yinzlist is made by Jacob Makarsky, a software engineer here in Pittsburgh, through a nonprofit so it stays free.</p>
-    <p class="cta-note"><a href="/about/">About →</a></p>
+    <p>
+      Yinzlist is made by Jacob Makarsky, a software engineer here in Pittsburgh,
+      through a nonprofit so it stays free.
+      <a href="/about/">More about us</a>
+    </p>
   </section>
 
 </main>
 
-<footer class="wrap">
-  <p>
-    Yinzlist is made with ❤️ by
-    <a href="https://communityaccessproject.org">Community Access Project</a>,
-    a Pennsylvania nonprofit corporation.
-  </p>
-  <p><a href="/about/">About</a> · <a href="/privacy/">Privacy</a></p>
+<footer>
+  <div class="wrap">
+    <i class="mark" aria-hidden="true"></i>
+    <p>
+      Made with ❤️ in Pittsburgh by
+      <a href="https://communityaccessproject.org">Community Access Project</a>,
+      a Pennsylvania nonprofit.
+    </p>
+    <nav><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
+  </div>
 </footer>
 
+<script>
+(function () {
+  // The public anon key, the same one the app ships with. It can only call
+  // join_waitlist; the list itself is closed to it.
+  var API = 'https://api.yinzlist.com/rest/v1/rpc/join_waitlist';
+  var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzg5ODM5OTk1LCJleHAiOjE5NDc1MTk5OTV9.NmGaKj6jFuLQq7UcN0KK5vxSnvHoLGN6KV1hcX4Ubsk';
+  // The list above is a fallback; the database is the real list of areas.
+  fetch('https://api.yinzlist.com/rest/v1/areas?select=name&order=name', {
+    headers: { apikey: KEY, Authorization: 'Bearer ' + KEY }
+  }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
+    if (!rows.length) return;
+    var ul = document.getElementById('areas');
+    ul.textContent = '';
+    rows.forEach(function (row) {
+      var li = document.createElement('li');
+      li.textContent = row.name;
+      ul.appendChild(li);
+    });
+  }).catch(function () {});
+
+  var form = document.getElementById('waitlist');
+  var input = document.getElementById('waitlist-email');
+  var status = document.getElementById('waitlist-status');
+  var button = form.querySelector('button');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = input.value.trim();
+    if (form.website.value) { status.textContent = 'You’re on the list.'; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      status.textContent = 'That doesn’t look like an email address.';
+      input.focus();
+      return;
+    }
+    button.disabled = true;
+    status.textContent = '';
+    fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', apikey: KEY, Authorization: 'Bearer ' + KEY },
+      body: JSON.stringify({ email: email })
+    }).then(function (r) {
+      if (!r.ok) throw r;
+      form.reset();
+      status.textContent = 'You’re on the list. We’ll email you when it’s out.';
+    }).catch(function () {
+      status.textContent = 'That didn’t go through. Try again in a minute.';
+    }).then(function () {
+      button.disabled = false;
+    });
+  });
+})();
+</script>
 </body>
 </html>
